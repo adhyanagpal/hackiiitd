@@ -21,8 +21,20 @@ app.get('/',(req,res)=>{
     //res.send('welcome')
 })
 
-app.get('/ourstore',(req,res)=>{
+app.get('/ourstore',isLoggedin,(req,res)=>{
         res.render('CropSelect')
         })
+
+app.get('/logout',isLoggedin,(req,res)=>{
+    req.logout();
+    res.redirect('/');
+})
+function isLoggedin(req,res,next){
+    if(req.isAuthenticated){
+        return next();
+    }else{
+        res.render('loginPage')
+    }
+}
 
 app.listen(3000)
