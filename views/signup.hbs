@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<style>
+    .signup-div{
+        width:500px;
+        height:600px;
+        display:block;
+        margin-left:33%;
+        margin-top:3%;
+    }
+
+</style>
+
+<body>
+    {{>navbar}}
+    <div class="signup-div">
+        <h1 class='display-4'>Sign Up From Here!</h1>
+        <br>
+        <form id="signup-form" method="POST" action="/signup">
+            <div class="form-group">
+                <label>First Name</label>
+                <input type="text" class="form-control"  placeholder="First name" name="firstname">
+            </div>
+            <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" class="form-control"  placeholder="Last name" name="lastname">
+            </div>
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" class="form-control"  placeholder="Username" name="username">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" placeholder="Password" name="password">
+            </div>
+             <div class="form-group">
+                <label>Contact Number</label>
+                <input type="text" class="form-control" placeholder="Contact Number" name="contactnumber">
+            </div>
+            <div >
+                <input type="checkbox" class="thisorthat" name="buyer"><label>Buyer</label>
+                <span>          </span>
+                <input type="checkbox" class="thisorthat" name="farmer"><label>Farmer</label>
+            </div>
+                <button id='submit-btn'>Sign up</button>
+        </form>
+    </div>
+    
+    <script type="text/javascript">
+            $('.thisorthat').on('change',function(){
+                $('.thisorthat').not(this).prop('checked',false);
+            });
+    </script>
+</body>
+</html>
