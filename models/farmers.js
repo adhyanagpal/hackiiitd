@@ -8,7 +8,11 @@ const Farmers=sequelize.define('farmers',{
     id:{
         type:Sequelize.INTEGER,
         primaryKey:true,
+<<<<<<< HEAD
         // autoIncrement:true,
+=======
+        //autoIncrement:true,
+>>>>>>> 33ba80f9dbc4e8adcb95b62335035fb8cdb29a51
     },
     username:{
         type:Sequelize.STRING,
@@ -30,7 +34,7 @@ const Farmers=sequelize.define('farmers',{
         type:Sequelize.INTEGER,
         allowNull:false,
     },
-    crops:{
+    crop:{
         type:Sequelize.STRING,
         primaryKey:true,
         allowNull:false,

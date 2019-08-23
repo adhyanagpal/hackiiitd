@@ -1,0 +1,62 @@
+.transparent{
+    background-color : hsla(0, 0%, 0%, 0.7);
+  
+  }
+  
+  .nav-link{
+    color : white
+  }
+  
+  .navbar{
+    min-height: 70px;
+  }
+  
+  .nav-item a{
+    font-family: 'Crushed';
+    font-size: 23px;
+  }
+  
+  .navbar > li{
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .logo{
+    max-width : 265px;
+    height: auto;
+  }
+
+  .title{
+  text-align: center;
+   color: azure;
+   font-family: 'Crushed';
+   font-size: 60px;
+  }
+
+  .bgimg{
+    background-image: url('/farm.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 130px;
+    height : 100%;
+    padding-top: 150px;
+    padding-bottom: 150px;
+    padding-left: 50px;
+    padding-right: 50px;
+    
+}
+
+.styling{
+  font-family : 'Architects Daughter';
+  font-size : 27px;
+
+}
+
+.mr-3{
+height : 500px;
+width : 50%;
+border : 3px solid black;
+margin-left: 10px;
+border-radius: 8px;
+margin-bottom: 10px;
+}

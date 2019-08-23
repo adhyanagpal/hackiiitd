@@ -28,6 +28,16 @@ function isLoggedin(req,res,next){
     }
 }
 
+app.get('/about',(req,res)=>{
+    res.render('aboutus')
+    //res.send('welcome')
+})
+
+app.get('/contact',(req,res)=>{
+    res.render('contactus')
+    //res.send('welcome')
+})
+
 app.get('/ourstore',isLoggedin,(req,res)=>{
         res.render('CropSelect')
         })
