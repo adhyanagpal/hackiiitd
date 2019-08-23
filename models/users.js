@@ -12,7 +12,7 @@ const Users=sequelize.define('users',{
     },
     username:{
         type:Sequelize.STRING,
-        allownull:false,
+        allowNull:false,
     },
     password:{
         type:Sequelize.STRING,
@@ -20,15 +20,15 @@ const Users=sequelize.define('users',{
     },
     firstname:{
         type:Sequelize.STRING,
-        allownull:false,
+        allowNull:false,
     },
     lastname:{
         type:Sequelize.STRING,
-        allownull:false,        
+        allowNull:false,        
     },
     contactNum:{
         type:Sequelize.INTEGER,
-        allownull:false,
+        allowNull:false,
     },
     category:{
         type:Sequelize.STRING,

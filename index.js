@@ -20,6 +20,13 @@ app.get('/',(req,res)=>{
     res.render('index1')
     //res.send('welcome')
 })
+function isLoggedin(req,res,next){
+    if(req.isAuthenticated){
+        return next();
+    }else{
+        res.render('loginPage')
+    }
+}
 
 app.get('/ourstore',isLoggedin,(req,res)=>{
         res.render('CropSelect')
@@ -29,12 +36,5 @@ app.get('/logout',isLoggedin,(req,res)=>{
     req.logout();
     res.redirect('/');
 })
-function isLoggedin(req,res,next){
-    if(req.isAuthenticated){
-        return next();
-    }else{
-        res.render('loginPage')
-    }
-}
 
 app.listen(3000)

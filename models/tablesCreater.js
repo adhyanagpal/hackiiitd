@@ -7,7 +7,11 @@ const syfun=require('./farmers').function
 const sequel=require('./farmers').sequelize
 
 syncfun(Users).then(()=>{
-    console.log('Synced to Users')
+    return console.log('Synced to Users')
+}).then(()=>{
+	syfun(Farmers).then(()=>{
+		console.log('Synced to Farmers')
+	})
 })
 
 syfun(Farmers).then(()=>{
