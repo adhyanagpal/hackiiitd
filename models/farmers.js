@@ -3,16 +3,18 @@ const sequelize=new Sequelize({
     dialect:'sqlite',
     storage:'./databases/test.sqlite',
 })
+// module.exports={
+//     up:function(queryInterface,Sequelize){
+//         return queryInterface.createTable('Users'),{
 
+//         }
+//     }
+// }
 const Farmers=sequelize.define('farmers',{
     id:{
         type:Sequelize.INTEGER,
         primaryKey:true,
-<<<<<<< HEAD
-        // autoIncrement:true,
-=======
-        //autoIncrement:true,
->>>>>>> 33ba80f9dbc4e8adcb95b62335035fb8cdb29a51
+        autoIncrement:true,
     },
     username:{
         type:Sequelize.STRING,
@@ -34,15 +36,16 @@ const Farmers=sequelize.define('farmers',{
         type:Sequelize.INTEGER,
         allowNull:false,
     },
-    crop:{
-        type:Sequelize.STRING,
-        primaryKey:true,
+    crops:{
+        type:Sequelize.INTEGER,
+        //primaryKey:true,
         allowNull:false,
     },
     price:{
         type:Sequelize.INTEGER,
         allowNull:false,
     }
+    
 })
 
 module.exports={

@@ -9,15 +9,10 @@ const sequel=require('./farmers').sequelize
 syncfun(Users).then(()=>{
     return console.log('Synced to Users')
 }).then(()=>{
-<<<<<<< HEAD
 	syfun(Farmers).then(()=>{
 		console.log('Synced to Farmers')
 	})
-=======
-    syfun(Farmers).then(()=>{
-        console.log('Synced to Farmers')
-    })
->>>>>>> 33ba80f9dbc4e8adcb95b62335035fb8cdb29a51
+
 })
 
 

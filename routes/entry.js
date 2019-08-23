@@ -29,17 +29,32 @@ route.post('/signup',(req,res)=>{
     //if(req.body.category1.on) const cate='Buyer'
     //else const cate='Farmer'
     const cate=req.body.category1?'Buyer':'Farmer'
-    Users.create({
-        username:req.body.username,
-        password:req.body.password,
-        firstname:req.body.username,
-        lastname:req.body.lastname,
-        contactNum:req.body.contactnumber,
-        category:cate,
-    }).then(newuser=>{
-        res.redirect('/login')
-        //res.send(newuser.category)
-    })
+    if(cate=='Buyer'){
+        Users.create({
+            username:req.body.username,
+            password:req.body.password,
+            firstname:req.body.username,
+            lastname:req.body.lastname,
+            contactNum:req.body.contactnumber,
+            category:cate,
+        }).then(newuser=>{
+            res.redirect('/login')
+            //res.send(newuser.category)
+        })
+    }
+    else{
+        Farmers.create({
+            username:req.body.username,
+            password:req.body.password,
+            firstname:req.body.farmers,
+            lastname:req.body.lastname,
+            contactNum:req.body.contactnumber,
+            category:cate,
+        }).then(newfarmer=>{
+            res.send('FarmerAdded')
+        })
+    }
+
 })
 
 route.post('/login',function(req,res,next){
