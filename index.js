@@ -21,4 +21,8 @@ app.get('/',(req,res)=>{
     //res.send('welcome')
 })
 
+app.get('/ourstore',(req,res)=>{
+        res.render('CropSelect')
+        })
+
 app.listen(3000)

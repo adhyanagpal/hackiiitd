@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<style>
+    .signup-div{
+        width:500px;
+        height:600px;
+        display:block;
+        margin-left:33%;
+        margin-top:3%;
+    }
+
+</style>
+
+<body>
+    {{>navbar}}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="signup-div">
+        <h1 class='display-4'>Select Crop</h1>
+        <br>
+        <form id="signup-form" method="POST" action="/signup">
+            <div class="form-group">
+                <label>Crop Name</label>
+                <input type="text" class="form-control"  placeholder="Crop name" name="cropname">
+            </div>
+            <div>
+                 <div class="form-group">
+                    
+                    <label for="exampleFormControlSelect1">Destination Place</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                      <option>New Delhi</option>
+                      <option>Uttar Pradesh</option>
+                      <option>Haryana</option>
+                      <option>Punjab</option>
+                      <option>Madhya Pradesh</option>
+                      <option>Rajasthan</option>
+                    </select>
+                  </div>    
+                <button id='submit-btn'>Submit</button>
+            </div>
+        </form>
+    </div>
+    
+    
+</body>
+</html>
