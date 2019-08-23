@@ -15,8 +15,8 @@ const entryroute=require('./routes/entry.js')
 app.use(entryroute)
 
 app.get('/',(req,res)=>{
-    //res.render('index')
-    res.send('welcome')
+    res.render('index1')
+    //res.send('welcome')
 })
 
 app.listen(3000)

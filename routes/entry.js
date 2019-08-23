@@ -1,6 +1,6 @@
 const express=require('express')
 const Sequelize=require('sequelize')
-const Users=require('../models/users')
+const Users=require('../models/tablesCreater').Users
 const passport=require('../passport')
 const session=require('express-session')
 

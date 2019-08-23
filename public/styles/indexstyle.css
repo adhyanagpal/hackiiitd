@@ -1,0 +1,59 @@
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    
+    overflow-x: hidden
+  }
+
+  .carousel-inner > .carousel-item  {
+   height : 100vh
+  }
+
+  .carousel-caption{
+    top: 60%;
+    transform: translateY(-40%);
+    bottom : initial;
+    
+  }
+
+  .carousel-caption > h1{
+    font-family : 'Alike Angular';
+    font-size: 60px;
+  }
+ 
+.transparent{
+  background-color : hsla(0, 0%, 0%, 0.7);
+
+}
+
+.nav-link{
+  color : white
+}
+
+.navbar{
+  min-height: 70px;
+}
+
+.nav-item a{
+  font-family: 'Crushed';
+  font-size: 23px;
+}
+
+.navbar > li{
+  padding-left: 25px;
+  padding-right: 25px;
+}
+.logo{
+  max-width : 80px;
+  height: auto
+}
+
+.centrelogo{
+  max-width : 450px;
+  height : auto;
+}
+
+.btn{
+  border: 5px solid;
+}

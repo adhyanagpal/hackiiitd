@@ -37,12 +37,20 @@ const Users=sequelize.define('users',{
 
 })
 
-Users.sync({force:true}).then(()=>{
-    console.log('Synced to users')
-})
+//Users.sync({force:true}).then(()=>{
+//     console.log('Synced to users')
+// })
 
-sequelize.authenticate().then(()=>{
-    console.log('Connected')
-})
+// sequelize.authenticate().then(()=>{
+//     console.log('Connected')
+// })
 
-module.exports=Users
+//module.exports=Users
+
+module.exports={
+    Users,
+    function (table){
+        return table.sync({force:true})
+    },
+    sequelize
+}

@@ -1,6 +1,6 @@
 const passport=require('passport')
 const LocalStrategy=require('passport-local').Strategy
-const Users=require('./models/users')
+const Users=require('./models/tablesCreater').Users
 const session=require('express-session')
 
 passport.use(new LocalStrategy((username,password,done)=>{
