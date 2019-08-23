@@ -10,6 +10,8 @@ app.set('view engine','hbs')
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 
+hbs.registerPartials(path.join(__dirname,'/partials'))
+
 const entryroute=require('./routes/entry.js')
 
 app.use(entryroute)
@@ -18,5 +20,9 @@ app.get('/',(req,res)=>{
     res.render('index1')
     //res.send('welcome')
 })
+
+app.get('/ourstore',(req,res)=>{
+        res.render('CropSelect')
+        })
 
 app.listen(3000)
