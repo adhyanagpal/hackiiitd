@@ -1,7 +1,6 @@
 {
   "name": "cropex",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,5 +16,15 @@
     "sequelize": "^5.16.0",
     "session": "^0.1.0",
     "sqlite3": "^4.1.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adhyanagpal/hackiiitd.git"
+  },
+  "bugs": {
+    "url": "https://github.com/adhyanagpal/hackiiitd/issues"
+  },
+  "homepage": "https://github.com/adhyanagpal/hackiiitd#readme",
+  "description": ""
 }
