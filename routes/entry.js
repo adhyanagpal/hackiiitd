@@ -3,6 +3,7 @@ const Sequelize=require('sequelize')
 const Users=require('../models/tablesCreater').Users
 const passport=require('../passport')
 const session=require('express-session')
+const Farmers=require('../models/tablesCreater').Farmers
 
 const route=express.Router()
 
@@ -24,6 +25,8 @@ route.get('/login',(req,res)=>{
 route.get('/signup',(req,res)=>{
     res.render('signup')
 })
+
+
 
 route.post('/signup',(req,res)=>{
     //if(req.body.category1.on) const cate='Buyer'
@@ -73,7 +76,10 @@ route.post('/login',function(req,res,next){
                     return console.log(err)
                 }
                 else{
-                    res.redirect('/ourstore')
+                    if (user.category=='buyer')
+                        res.redirect('/ourstore')
+                    else 
+                        res.redirect('/store')
                 }
             })
         }

@@ -37,12 +37,16 @@ const Farmers=sequelize.define('farmers',{
         allowNull:false,
     },
     crops:{
-        type:Sequelize.INTEGER,
+        type:Sequelize.STRING,
         //primaryKey:true,
         allowNull:false,
     },
     price:{
         type:Sequelize.INTEGER,
+        allowNull:false,
+    },
+    location:{
+        type:Sequelize.STRING,
         allowNull:false,
     }
     

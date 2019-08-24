@@ -41,6 +41,9 @@ app.get('/contact',(req,res)=>{
 app.get('/ourstore',isLoggedin,(req,res)=>{
         res.render('CropSelect')
         })
+app.get('/store',isLoggedin,(req,res)=>{
+        res.render('storeview')
+        })
 
 app.get('/logout',isLoggedin,(req,res)=>{
     req.logout();

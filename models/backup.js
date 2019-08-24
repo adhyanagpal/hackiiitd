@@ -1,9 +1,6 @@
 const Users=require('./users').Users
 const syncfun=require('./users').function
 const sequelize=require('./users').sequelize
-const express=require('express')
-const route=express.Router()
-
 const Sequelized=require('sequelize')
 const sequelized=new Sequelized({
     dialect:'sqlite',
@@ -177,19 +174,7 @@ syncfun(Users).then(()=>{
 
 })
 
-route.use(express.urlencoded({extended:true}))
 
-route.get('/store',(req,res)=>{
-    Farmers.findAll({
-        where:((req.body.cropname==crop) && (req.body.Destination==destinationplace))
-    }).then(Farmers=>{
-        res.json(Farmers)
-    }).then(Farmers=>{
-        res.render('../buyerview')
-    }).then(()=>{
-        console.log('Hey in get request')
-    })
-})
 
 sequelize.authenticate().then(()=>{
     console.log('Connected to Users')
