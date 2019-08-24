@@ -1,6 +1,7 @@
 const Users=require('./users').Users
 const syncfun=require('./users').function
 const sequelize=require('./users').sequelize
+
 const express=require('express')
 const route=express.Router()
 
@@ -14,9 +15,38 @@ const Farmers=require('./farmers').Farmers
 const syfun=require('./farmers').function
 const sequel=require('./farmers').sequelize
 
+const Cart=sequelized.define('cart',{
+    tokenid:{
+        type:Sequelized.INTEGER,
+        primaryKey:true,
+        autoIncrement:true,
+    },
+    farmerid:{
+        type:Sequelized.INTEGER,
+    },
+    buyerid:{
+        type:Sequelized.INTEGER,
+    },
+    placewhererawmaterialis:{
+        type:Sequelized.STRING,
+    },
+    destinationplace:{
+        type:Sequelized.STRING,
+    },
+    crop:{
+        type:Sequelized.STRING,
+    },
+    cropq:{
+        type:Sequelized.INTEGER,
+    },
+    cropp:{
+        type:Sequelized.INTEGER,
+    }
+        
+    })
+
+
 syncfun(Users).then(()=>{
-    
-    Users.sync({force:true}).then(() => {
     Users.bulkCreate([
         {
     id: 101,
@@ -50,17 +80,10 @@ syncfun(Users).then(()=>{
     
     ]).then(()=>console.log('written'))
     
-})
-
-    
-    
-    
+}).then(()=>{
     return console.log('Synced to Users')
 }).then(()=>{
 	syfun(Farmers).then(()=>{
-        
-        
-        Farmers.sync({force:true}).then(() => {
     Farmers.bulkCreate([
         {
     id:201,
@@ -133,62 +156,64 @@ syncfun(Users).then(()=>{
     
     ]).then(()=>console.log('written'))
     
-})
+}).then(()=>{
+    return console.log('Synced to Farmers')   
+    })
         
-        return console.log('Synced to Farmers')
+
 	}).then(()=>{
         
-    const Cart=sequelized.define('cart',{
-    tokenid:{
-        type:Sequelized.INTEGER,
-        primaryKey:true,
-        autoIncrement:true,
-    },
-    farmerid:{
-        type:Sequelized.INTEGER,
-    },
-    buyerid:{
-        type:Sequelized.INTEGER,
-    },
-    placewhererawmaterialis:{
-        type:Sequelized.STRING,
-    },
-    destinationplace:{
-        type:Sequelized.STRING,
-    },
-    crop:{
-        type:Sequelized.STRING,
-    },
-    cropq:{
-        type:Sequelized.INTEGER,
-    },
-    cropp:{
-        type:Sequelized.INTEGER,
-    }
+    // const Cart=sequelized.define('cart',{
+    // tokenid:{
+    //     type:Sequelized.INTEGER,
+    //     primaryKey:true,
+    //     autoIncrement:true,
+    // },
+    // farmerid:{
+    //     type:Sequelized.INTEGER,
+    // },
+    // buyerid:{
+    //     type:Sequelized.INTEGER,
+    // },
+    // placewhererawmaterialis:{
+    //     type:Sequelized.STRING,
+    // },
+    // destinationplace:{
+    //     type:Sequelized.STRING,
+    // },
+    // crop:{
+    //     type:Sequelized.STRING,
+    // },
+    // cropq:{
+    //     type:Sequelized.INTEGER,
+    // },
+    // cropp:{
+    //     type:Sequelized.INTEGER,
+    // }
         
-    })
-    Cart.sync() 
-    sequelized.authenticate().then(()=>{
-    console.log('Connected to Cart')
+    // })
+    Cart.sync().then(()=>{
+        console.log('Synced to Cart')
     })  
         
-        
-    })
-
 })
+
 
 route.use(express.urlencoded({extended:true}))
 
 route.get('/store',(req,res)=>{
     Farmers.findAll({
         where:((req.body.cropname==crop) && (req.body.Destination==destinationplace))
-    }).then(Farmers=>{
-        res.json(Farmers)
-    }).then(Farmers=>{
-        res.render('../buyerview')
-    }).then(()=>{
-        console.log('Hey in get request')
+    }).then(function(Farmers){
+        //res.json(Farmers)
+        let arr=Farmers.map(u=>u.get({plain:true}))
+        res.render('buyview',{arr})
     })
+    // .then(Farmers=>{
+    //     res.render('buyview')
+    // }).then(()=>{
+    //     console.log('Hey in get request')
+    // })
 })
 
 sequelize.authenticate().then(()=>{
@@ -199,6 +224,11 @@ sequel.authenticate().then(()=>{
     console.log('Connected to Farmers')
 })
 
+sequelized.authenticate().then(()=>{
+    console.log('Connected to Cart')
+})
+
+
 module.exports={
-    Users,Farmers
+    Users,Farmers,Cart
 }

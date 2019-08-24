@@ -32,6 +32,7 @@ route.post('/signup',(req,res)=>{
     //if(req.body.category1.on) const cate='Buyer'
     //else const cate='Farmer'
     const cate=req.body.category1?'Buyer':'Farmer'
+    console.log(cate)
     if(cate=='Buyer'){
         Users.create({
             username:req.body.username,
@@ -49,7 +50,7 @@ route.post('/signup',(req,res)=>{
         Farmers.create({
             username:req.body.username,
             password:req.body.password,
-            firstname:req.body.farmers,
+            firstname:req.body.firstname,
             lastname:req.body.lastname,
             contactNum:req.body.contactnumber,
             category:cate,
