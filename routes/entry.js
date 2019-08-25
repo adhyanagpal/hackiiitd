@@ -18,8 +18,12 @@ route.use(passport.initialize())
 route.use(passport.session())
 
 
-route.get('/login',(req,res)=>{
-    res.render('loginPage')
+route.get('/loginforbuyer',(req,res)=>{
+    res.render('loginPageBuyer')
+})
+
+route.get('/loginforfarmer',(req,res)=>{
+    res.render('loginPageFarmer')
 })
 
 route.get('/signup',(req,res)=>{
@@ -42,7 +46,7 @@ route.post('/signup',(req,res)=>{
             contactNum:req.body.contactnumber,
             category:cate,
         }).then(newuser=>{
-            res.redirect('/login')
+            res.redirect('/loginforbuyer')
             //res.send(newuser.category)
         })
     }
@@ -55,20 +59,21 @@ route.post('/signup',(req,res)=>{
             contactNum:req.body.contactnumber,
             category:cate,
         }).then(newfarmer=>{
+            //res.redirect
             res.send('FarmerAdded')
         })
     }
 
 })
 
-route.post('/login',function(req,res,next){
+route.post('/loginforbuyer',function(req,res,next){
     passport.authenticate('local',function (error,user,info){
         if(!user){
             if(info.message=='NoSuchUser'){
                 res.redirect('/signup')
             }
             else if(info.message=='WrongPassword'){
-                res.redirect('/login')
+                res.redirect('/loginforbuyer')
             }
         }
         else{
@@ -77,10 +82,7 @@ route.post('/login',function(req,res,next){
                     return console.log(err)
                 }
                 else{
-                    if (user.category=='buyer')
-                        res.redirect('/ourstore')
-                    else 
-                        res.redirect('/store')
+                    res.redirect('/selectcrop')
                 }
             })
         }

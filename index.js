@@ -13,8 +13,12 @@ app.use(express.json())
 hbs.registerPartials(path.join(__dirname,'/partials'))
 
 const entryroute=require('./routes/entry.js')
+const storehandler=require('./routes/storehandler.js')
+const cropselecthandler=require('./routes/cropselector.js')
 
 app.use(entryroute)
+app.use(storehandler)
+app.use(cropselecthandler)
 
 app.get('/',(req,res)=>{
     res.render('index1')

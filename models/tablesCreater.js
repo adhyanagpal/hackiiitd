@@ -201,20 +201,20 @@ syncfun(Users).then(()=>{
 
 route.use(express.urlencoded({extended:true}))
 
-route.get('/store',(req,res)=>{
-    Farmers.findAll({
-        where:((req.body.cropname==crop) && (req.body.Destination==destinationplace))
-    }).then(function(Farmers){
-        //res.json(Farmers)
-        let arr=Farmers.map(u=>u.get({plain:true}))
-        res.render('buyview',{arr})
-    })
-    // .then(Farmers=>{
-    //     res.render('buyview')
-    // }).then(()=>{
-    //     console.log('Hey in get request')
-    // })
-})
+// route.get('/store',(req,res)=>{
+//     Farmers.findAll({
+//         where:((req.body.cropname==crop) && (req.body.Destination==destinationplace))
+//     }).then(function(Farmers){
+//         //res.json(Farmers)
+//         let arr=Farmers.map(u=>u.get({plain:true}))
+//         res.render('buyview',{arr})
+//     })
+//     // .then(Farmers=>{
+//     //     res.render('buyview')
+//     // }).then(()=>{
+//     //     console.log('Hey in get request')
+//     // })
+// })
 
 sequelize.authenticate().then(()=>{
     console.log('Connected to Users')
