@@ -3,7 +3,9 @@ const Sequelize=require('sequelize')
 const Users=require('../models/tablesCreater').Users
 const passport=require('../passport')
 const session=require('express-session')
+const sessionFarmer=require('express-session')
 const Farmers=require('../models/tablesCreater').Farmers
+const passportFarmer=require('../passportfarmer')
 
 const route=express.Router()
 
@@ -14,8 +16,18 @@ route.use(session({
     cookie: { secure: false }
 }))
 
+route.use(sessionFarmer({
+    secret: 'farmer secret',
+    saveUninitialized: true,
+    resave: false,
+    cookie: { secure: false }
+}))
+
 route.use(passport.initialize())
 route.use(passport.session())
+
+route.use(passportFarmer.initialize())
+route.use(passportFarmer.session())
 
 
 route.get('/loginforbuyer',(req,res)=>{
@@ -59,8 +71,8 @@ route.post('/signup',(req,res)=>{
             contactNum:req.body.contactnumber,
             category:cate,
         }).then(newfarmer=>{
-            //res.redirect
-            res.send('FarmerAdded')
+            res.redirect('/loginforfarmer')
+            //res.send('FarmerAdded')
         })
     }
 
@@ -83,6 +95,29 @@ route.post('/loginforbuyer',function(req,res,next){
                 }
                 else{
                     res.redirect('/selectcrop')
+                }
+            })
+        }
+    })(req,res,next)
+})
+
+route.post('/loginforfarmer',function(req,res,next){
+    passportFarmer.authenticate('local',function (error,user,info){
+        if(!user){
+            if(info.message=='NoSuchUser'){
+                res.redirect('/signup')
+            }
+            else if(info.message=='WrongPassword'){
+                res.redirect('/loginforfarmer')
+            }
+        }
+        else{
+            req.logIn(user,err=>{
+                if(err){
+                    return console.log(err)
+                }
+                else{
+                    res.redirect('/farmercropselect')
                 }
             })
         }

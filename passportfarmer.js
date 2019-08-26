@@ -31,5 +31,5 @@ passport.deserializeUser((farmer,done)=>{
     done(null,farmer)
 })
 
-module.exports=passportfarmer
+module.exports=passport
 
